@@ -1,19 +1,8 @@
 import axios from "axios";
 
-const RenderUsers = ({user, base_url, getAlUsers}) => {
+const RenderUsers = ({user, handleDelete, handleUpdate}) => {
 
-    const handleDelete = () => {
-    
-        console.log(user.id);
-        axios
-            .delete(base_url + user.id + "/")
-            .then(({data}) => {
-                getAlUsers()
-                alert("Usuario eliminado")
-            } )
-            .catch((err) => console.log(err))
-    
-      }
+
   return ( 
     
     <article className="user__container max-h-[300px]   p-2 mx-1  ">
@@ -63,10 +52,10 @@ const RenderUsers = ({user, base_url, getAlUsers}) => {
         </div>
         <hr />
         <div className="user__option">
-            <button   onClick={handleDelete} className="button  border-2 border-red-500 bg-red-400 button__delite">
-            <i className='bx bx-trash text-white'   ></i>
+            <button   onClick={()=> handleDelete(user.id)} className="button  border-2 border-red-500 bg-red-400 button__delite">
+            <i className='bx bx-trash text-white' ></i>
             </button>
-            <button className="button border-2 border-neutral-800/60 button__edite">
+            <button onClick={()=> handleUpdate(user)} className="button border-2 border-neutral-800/60 button__edite">
             <i className='bx text-zinc-600 bx-edit-alt' ></i>
             </button>
         </div>

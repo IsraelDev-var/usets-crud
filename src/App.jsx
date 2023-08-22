@@ -11,9 +11,20 @@ function App() {
   const [ismodal, setIsmodal] = useState(false)
 
 
+// const handleUpdate = (dataUser)=> {
+//   console.log(dataUser);
+// }
+
+  const handleDelete = (user_id) => {
   
-
-
+    axios
+        .delete(base_url + user_id + "/")
+        .then(() => {
+            getAlUsers()
+            alert("Usuario eliminado")
+        } )
+        .catch((err) => console.log(err))
+  }
 
 
 
@@ -26,50 +37,35 @@ function App() {
 
   }
 
-  const craeteUser = (newUser, formElement) => {
-    axios
-      .post(base_url, newUser)
-      .then(({data}) => {
-        console.log(data)
-        formElement.reset()
-        getAlUsers()
-        handleCreateUser()
-      } )
-      .catch((err) => console.log(err))
-
-  }
-
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-
-    const formData = Object.fromEntries(new FormData(e.target))
-
-//crear nuevo usuario
-
-  craeteUser(formData, e.target);
-
-
-  }
-
-
+const craeteUser = (newUser) => {
   
-  const handleCreateUser = (e)=>{
-      if (ismodal) {
-        setIsmodal(false)
+  axios
+    .post(base_url, newUser)
+    .then(() => {
         
-      }else{
-        setIsmodal(true)
-      }
+      getAlUsers()
+      handleCreateUser()
+    } )
+    .catch((err) => console.log(err))
+
+}
+
+//  const formData = Object.fromEntries(new FormData(e.target))
+
+// //crear nuevo usuario
+
+ 
+  
+  const handleCreateUser = ()=>{
+
+    ismodal ? setIsmodal(false):setIsmodal(true)
   }
 
 
  useEffect(() => {
   
 
-  axios
-    .get(base_url)
-    .then(({data}) => setUsers(data))
-    .catch((err) => console.log(err))
+  getAlUsers()
 
  }, [])
  
@@ -84,9 +80,9 @@ function App() {
           </button>
         </nav>
         { 
-            ismodal ? <UsersForm handleSubmit={handleSubmit} handleCreateUser={handleCreateUser} />: ""
+            ismodal ? <UsersForm  craeteUser={craeteUser}  handleCreateUser={handleCreateUser} />: ""
         }
-        <UsersList getAlUsers={getAlUsers} base_url={base_url}  users={users} />
+        <UsersList    handleDelete={handleDelete}  users={users} />
         
       </main>
     </>
