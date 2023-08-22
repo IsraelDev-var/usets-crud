@@ -1,0 +1,39 @@
+.user__container {
+    border: 2px solid rgba(100, 100, 100, 0.718);
+    border-radius: .5rem;
+}
+.user__name-container{
+    margin-bottom: .5rem;
+    display: flex;
+    
+    
+}
+.user__mane {
+    padding: 1rem 0;
+    text-align: center;
+}
+.user__mane  span{
+    font-weight: 700;
+}
+.user__data{
+    display: grid;
+    gap: .2rem;
+    margin: .4rem 0 1.5rem 0;
+}
+.user__option{
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+
+.bx-trash,
+.bx-edit-alt{
+    font-size: 1.5rem;
+    padding: 5px;
+    
+}
+.button{
+   border-radius: .3rem;
+    margin: 1rem 0;
+}
+
