@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const RenderUsers = ({user, handleDelete, handleUpdate}) => {
+const RenderUsers = ({user, handleDelete, handleUpdateOpenModal, }) => {
 
 
   return ( 
@@ -44,7 +44,7 @@ const RenderUsers = ({user, handleDelete, handleUpdate}) => {
                     {
                         user.birthday
                     }
-                   
+                
                 </span>
 
             </div>
@@ -55,7 +55,7 @@ const RenderUsers = ({user, handleDelete, handleUpdate}) => {
             <button   onClick={()=> handleDelete(user.id)} className="button  border-2 border-red-500 bg-red-400 button__delite">
             <i className='bx bx-trash text-white' ></i>
             </button>
-            <button onClick={()=> handleUpdate(user)} className="button border-2 border-neutral-800/60 button__edite">
+            <button onClick={()=>handleUpdateOpenModal(user)} className="button border-2 border-neutral-800/60 button__edite">
             <i className='bx text-zinc-600 bx-edit-alt' ></i>
             </button>
         </div>

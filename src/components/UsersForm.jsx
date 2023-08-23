@@ -1,24 +1,55 @@
-import axios from "axios";
+
+import { useEffect } from "react";
 import { useForm } from "react-hook-form"
+import { camp_resert } from "../shared/constant";
+import { data } from "autoprefixer";
+import axios from "axios";
 
-const UsersForm = ({handleCreateUser, craeteUser,  }) => {
+const UsersForm = ({ craeteUser, isUpdate, setIsmodal, setIsUpdate, handlePut }) => {
 
-    const {handleSubmit, register} = useForm()
+    const {handleSubmit, register, reset} = useForm()
 
     const submitdata = (data)=>{
+
+        if (isUpdate) {
+            handlePut(data, reset)
+            
+        }else{
+            craeteUser(data, reset)
+        }
         
-        craeteUser(data)
     }
 
 
 
+
+    const handleCloseModal = () => {
+        
+        setIsmodal(false)
+        setIsUpdate(null)
+        reset(camp_resert)
+    }
+
+    useEffect(() => {
+        if(isUpdate){
+            reset(isUpdate)
+            
+        }
+
+    }, [isUpdate])
+
+
 return (
-    <section className="form_section  display-grid p-2 h-screen w-[100%]  bg-neutral-950/50">
+    <section className="form_section  display-grid p-2 h-[100%] w-[100%]  bg-neutral-950/50">
         <div className="form__users-container   ">
             
-        <i   onClick={handleCreateUser} className=' text-2xl bx bx-x text-white' ></i>
+        <i   onClick={handleCloseModal} className=' text-2xl bx bx-x text-white' ></i>
             <h2 className="form__title">
-                <span>New User</span>
+                <span>
+                    {
+                        isUpdate ? "Update User" : "New User"
+                    }
+                    </span>
             </h2>
 
             <form onSubmit={handleSubmit(submitdata)}   className="form__data" id="form__data">
@@ -54,8 +85,13 @@ return (
                     
                 </div>
 
-                <button  type="submit" className="form__button  bg-black p-2 my-4 mx-2 rounded-[10px] text-white">
-                    <i className='bx bx-send px-2'></i>Create User
+                <button type="submit" className="form__button  bg-black p-2 my-4 mx-2 rounded-[10px] text-white">
+                    <i className='bx bx-send px-2'></i>
+                    
+                        {
+                            isUpdate ? "Save Changes":"New User"
+                        }
+                    
                 </button>
 
             </div>

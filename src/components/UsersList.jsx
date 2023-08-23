@@ -1,13 +1,18 @@
 import RenderUsers from "./RenderUsers"
 
-const UsersList = ({users, handleDelete, handleUpdate,}) => {
+const UsersList = ({users, handleDelete, handleUpdateOpenModal, }) => {
 
 
   return (
     <section className="users__list section  ">
-     
+    
         {
-          users.map((user)=> <RenderUsers  handleUpdate={handleUpdate}  handleDelete={handleDelete} user={user} key={user.id} />)
+          users.map((user)=> <RenderUsers
+         
+            handleUpdateOpenModal={handleUpdateOpenModal} 
+            handleDelete={handleDelete}
+            user={user}
+            key={user.id} />)
         }
 
     </section>
