@@ -1,6 +1,11 @@
 .user__container {
     border: 2px solid rgba(100, 100, 100, 0.718);
     border-radius: .5rem;
+    transition:  all .2s;
+    box-shadow: 8px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+.user__container:hover{
+    box-shadow: -8px 10px 2px -1px rgba(0, 0, 255, .2) ;
 }
 .user__name-container{
     margin-bottom: .5rem;

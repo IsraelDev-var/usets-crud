@@ -57,13 +57,13 @@ return (
 
                 <div   className="form__box">
                 <label htmlFor="name" className="form__label">Name</label>
-                    <input type="text" {...register("first_name")} id="name" name="first_name"  required placeholder="First Name" className="form__input outline-none" />
+                    <input max={25} type="text" {...register("first_name")} id="name" name="first_name"  required placeholder="First Name" className="form__input outline-none" />
                     
                 </div>
 
                 <div className="form__box">
                 <label htmlFor="last-name" className="form__label">Last Name</label>
-                    <input type="text" {...register("last_name")} id="last-name" name="last_name" required placeholder="Last Name" className="form__input outline-none "  />
+                    <input max={25} type="text" {...register("last_name")} id="last-name" name="last_name" required placeholder="Last Name" className="form__input outline-none "  />
                     
                 </div>
                 <div className="form__box">
@@ -75,7 +75,7 @@ return (
 
                 <div className="form__box">
                     <label htmlFor="password" className="form__label">Password</label>
-                    <input type="password" {...register("password")} id="password" name="password" required placeholder="Password" className="form__input outline-none" />
+                    <input min={8} max={16} type="password" {...register("password")} id="password" name="password" required placeholder="Password" className="form__input outline-none" />
                     
                 </div>
 
