@@ -31,9 +31,11 @@ function App() {
     axios
         .patch(base_url + `${isUpdate.id}/`, newData )
         .then(() =>{ 
-            getAlUsers()
+            
             react(camp_resert)
-            setIsmodal(false)
+            getAlUsers()
+            
+            
     })
     .catch((err) =>{
         setIsmodal(false)
@@ -50,6 +52,7 @@ const craeteUser = (newUser, reset) => {
       handleUpdateOpenModal()
       getAlUsers()
       reset(camp_resert)
+      setIsmodal(false)
     } )
     .catch((err) => console.log(err))
 
@@ -95,7 +98,7 @@ useEffect(() => {
   
   getAlUsers()
 
-}, [])
+}, [ismodal])
 
 
   return (
