@@ -4,7 +4,7 @@ const UsersList = ({users, handleDelete, handleUpdateOpenModal, }) => {
 
 
   return (
-    <section className="users__list section  ">
+    <section className="users__list section   ">
     
         {
           users.map((user)=> <RenderUsers

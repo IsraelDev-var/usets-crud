@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 const RenderUsers = ({user, handleDelete, handleUpdateOpenModal, }) => {
 
